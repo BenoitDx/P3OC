@@ -15,7 +15,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, a {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	
 }
 ol, ul {
 	list-style: none;
@@ -189,4 +190,31 @@ footer nav ul {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	
+}
+.logmail {
+	width: 400px;
+	height: 40px;
+	background-color: white;
+	box-shadow: 5px 5px 5px  rgba(0, 0, 0, 0.062);
+	border-color: white;
+	margin-bottom: 24px;
+	border: none;
+}
+.titlelog {
+	margin-bottom: 32px;
+	margin-top: 100px;
+}
+.buttonlog {
+	height: 32px;
+	border: none;
+}
+a {
+	text-decoration: none;
+}
+label {
+	margin: 2em 0 1em 0;
+}
+li {
+	list-style: none;
 }
