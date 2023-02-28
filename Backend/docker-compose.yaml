@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+
+  projet-trois-oc-compose:
+    container_name: projet-trois-oc
+    build:
+        context: .
+    ports:
+      - 8080:8080
+    volumes:
+      - ./app:/app
+    command: ["node", "server.js"]
+      
+volumes:
+  database:
