@@ -5,10 +5,12 @@
 // Récuperer les information saisie //  
 const emailInput = document.querySelector('input[name="E-mail"]');
 const passwordInput = document.querySelector('input[name="password"]');
+
 // clic sur le bouton connextion //
 const loginButton = document.querySelector('.buttonlog');
 loginButton.addEventListener('click', () => {
-  // 
+    
+  // requete vers serveur // 
     const requestBody = {
     email: emailInput.value,
     password: passwordInput.value
@@ -29,6 +31,7 @@ loginButton.addEventListener('click', () => {
       alert('Identifiants invalides. Veuillez réessayer.');
     }
   })
+  // Erreurs // 
   .catch(error => {
     console.error('Erreur:', error);
   });

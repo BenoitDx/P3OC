@@ -254,14 +254,6 @@ button {
   font-size: 16px;
   border-color: #1D6154;
 }
-.filter-objets img:not(.Objets) {
+.hidden {
 	display: none;
-  }
-  
-  .filter-appartements img:not(.Appartements) {
-	display: none;
-  }
-  
-  .filter-hotels img:not(.Hotels) {
-	display: none;
-  }
+}

@@ -1,3 +1,5 @@
+// Script récupération dynamique des images // 
+
 // Adresse de récupération des images //
 fetch("http://localhost:5678/api/works")
 // Extraction des données de réponse au format JSON   
@@ -25,6 +27,8 @@ fetch("http://localhost:5678/api/works")
 // mesage pour indiquée que la requête et la création son ok dans la console nav  // 
     console.log("Données récupérées !");
   })
+
+// Création de 4 Boutons //   
   const buttonContainer = document.createElement("div");
   buttonContainer.classList.add("button-container");
   
@@ -46,4 +50,19 @@ fetch("http://localhost:5678/api/works")
   
   const boutonFiltre = document.querySelector(".bouton-filtre");
   boutonFiltre.appendChild(buttonContainer);
-  
+
+  function filterImagesByCategory(category) {
+    const images = document.querySelectorAll(".image-container");
+    images.forEach(img => {
+      const title = img.querySelector(".title").textContent;
+      if (category === "Tous" || title.includes(category)) {
+        img.style.display = "block";
+      } else {
+        img.style.display = "none";
+      }
+    });
+  }
+  button1.addEventListener("click", () => filterImagesByCategory("Tous"));
+button2.addEventListener("click", () => filterImagesByCategory("Objets"));
+button3.addEventListener("click", () => filterImagesByCategory("Appartements"));
+button4.addEventListener("click", () => filterImagesByCategory("Hôtels & restaurants"));
