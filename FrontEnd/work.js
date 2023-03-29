@@ -17,7 +17,7 @@ fetch("http://localhost:5678/api/works")
       title.classList.add("title");
       title.textContent = work.title;
       imgContainer.appendChild(title);
-      // stockage de l'image dans le tableau images en fonction de sa catégorie
+      // stockage des image dans le tableau images en fonction de sa cat
       if (work.category.name === "Objets") {
         images.push({element: imgContainer, category: "objets"});
       } else if (work.category.name === "Appartements") {
@@ -56,13 +56,13 @@ fetch("http://localhost:5678/api/works")
     const boutonFiltre = document.querySelector(".bouton-filtre");
     boutonFiltre.appendChild(buttonContainer);
 
-    // ajout de la fonctionnalité de filtre
+    // ajout de filtre
     const buttons = document.querySelectorAll(".button-container button");
     buttons.forEach(button => {
       button.addEventListener("click", function() {
         // suppression de toutes les images de la galerie
         imageContainer.innerHTML = "";
-        // ajout des images en fonction de la catégorie sélectionnée
+        // ajout des images en fonction de la catégorie 
         if (button.textContent === "Tous") {
           images.forEach(image => {
             imageContainer.appendChild(image.element);
