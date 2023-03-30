@@ -56,7 +56,7 @@ fetch("http://localhost:5678/api/works")
     const boutonFiltre = document.querySelector(".bouton-filtre");
     boutonFiltre.appendChild(buttonContainer);
 
-    // ajout de filtre
+    // filtre
     const buttons = document.querySelectorAll(".button-container button");
     buttons.forEach(button => {
       button.addEventListener("click", function() {
@@ -83,4 +83,4 @@ fetch("http://localhost:5678/api/works")
       });
     });
   });
-
+      // !!!!! reste style bouton !!!!//
