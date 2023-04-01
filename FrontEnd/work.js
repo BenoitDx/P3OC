@@ -59,7 +59,8 @@ fetch("http://localhost:5678/api/works")
     // filtre
     const buttons = document.querySelectorAll(".button-container button");
     buttons.forEach(button => {
-      button.addEventListener("click", function() {
+      button.addEventListener("click", function(event) {
+        event.preventDefault(); // empêche le comportement par défaut du bouton
         // suppression de toutes les images de la galerie
         imageContainer.innerHTML = "";
         // ajout des images en fonction de la catégorie 
@@ -80,7 +81,10 @@ fetch("http://localhost:5678/api/works")
             imageContainer.appendChild(image.element);
           });
         }
+        // ajout de la classe "active" au bouton cliqué
+        buttons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
       });
     });
   });
-      // !!!!! reste style bouton !!!!//
+

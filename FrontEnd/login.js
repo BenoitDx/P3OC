@@ -11,7 +11,7 @@ const loginButton = document.querySelector('.buttonlog');
 loginButton.addEventListener('click', () => {
     
   // requete vers serveur // 
-    const requestBody = {
+  const requestBody = {
     email: emailInput.value,
     password: passwordInput.value
   };
@@ -25,12 +25,17 @@ loginButton.addEventListener('click', () => {
   .then(response => {
     if (response.ok) {
       // Si connexion reussi redirige vers la page index //
+      response.json().then(data => {
+        // stockage du token dans la session
+        sessionStorage.setItem('token', data.token);
+      });
       window.location.href = 'index.html';
     } else {
       // Si erreur d'identifiant affiche un message //
-      alert('Identifiants invalides. Veuillez réessayer.');
+      alert('Identifiants ou mots de passe invalides. Veuillez réessayer.');
     }
   })
+  
   // Erreurs // 
   .catch(error => {
     console.error('Erreur:', error);
