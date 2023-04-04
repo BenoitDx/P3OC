@@ -25,7 +25,7 @@ fetch("http://localhost:5678/api/works")
       } else if (work.category.name === "Hotels & restaurants") {
         images.push({element: imgContainer, category: "hotels"});
       }
-    });
+});
     // ajout des images à la div gallery
     const imageContainer = document.querySelector(".gallery");
     images.forEach(image => {
@@ -60,7 +60,7 @@ fetch("http://localhost:5678/api/works")
     const buttons = document.querySelectorAll(".button-container button");
     buttons.forEach(button => {
       button.addEventListener("click", function(event) {
-        event.preventDefault(); // empêche le comportement par défaut du bouton
+        event.preventDefault(); 
         // suppression de toutes les images de la galerie
         imageContainer.innerHTML = "";
         // ajout des images en fonction de la catégorie 

@@ -22,6 +22,7 @@ time, mark, audio, video, a {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -57,7 +58,9 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px;
+	margin-top: 80px;
+	
 }
 section {
 	margin: 50px 0
@@ -260,9 +263,10 @@ button {
 	align-items: center;
 	padding: 16px;
 	font-weight: 600;
-	font-size: 16px;
+	font-size: 14px;
 	border-color: #1D6154;
 	border-style: solid;
+	font-family: "syne";
   }
   
 .button-container button.active,
@@ -274,4 +278,146 @@ button {
 .lien-login {
     font-weight: bold;
 	color: black;
+}
+
+a {
+	color: black;
+}
+
+.imgintro{
+	margin:0 !important;
+}
+
+.mode-edition {
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	height: 59px;
+	gap: 21px;
+	display: none;
+	font-family: 'Work Sans';
+	font-size: 16px;
+	color: white;
+	left:0;
+	right:0;
+	top: 0;
+}
+
+.mode-edition button{
+	padding: 11px 23px;	
+	font-family: 'Work Sans';
+	background-color: white;
+	border-radius: 60px;
+	border:none;
+	cursor: pointer;
+	color: black;
+}
+
+#introduction figure .modifier{
+	display: block;
+	margin-top: 16px;
+}
+
+.hide-edition {
+	display: none;
+}
+
+.modifier i{
+	margin-right: 10px;
+}
+
+#introduction h2{
+	margin-top: 20px;
+}
+
+#portfolio span{
+	align-self: center;
+	cursor: pointer;
+
+}
+
+#portfolio .titlemod{
+	display: flex;
+	justify-content: center;
+	gap: 24px;
+	line-height: 1.2;
+}
+
+.titlemod .modifier {
+	margin-top:70px;
+}
+
+.hide-edition {
+    display:none !important;
+}
+
+#modal{
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3); 
+}
+
+#modal .modal-wrapper{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 730px;
+	width: 630px;
+	border-radius: 10px;
+	background-color: white;
+}
+
+#modal .modal-wrapper h1{
+	font-family:"Work Sans";
+	font-size: 28px;
+	color: black;
+	font-weight: 400;
+	margin-bottom:50px;
+	position: absolute;
+	top:64px
+}
+
+.close {
+	position: absolute;
+	top:32px ;
+	right:32px ;
+	font-size: 24px;
+	
+}
+
+button#add-image {
+	position: absolute;
+	width: 230px;
+	height: 36px;
+	justify-content: center;
+	background-color: #1D6154;
+	color: white;
+	bottom: 90px;
+	font-family: "syne";
+	font-size: 14px
+}
+
+button#remove-gallery {
+	position: absolute;
+	bottom: 40px;
+	border: none;
+	color: red;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+hr{
+	position: absolute;
+	width: 420px;
+	bottom: 160px;
+	border-top: 1px solid #B3B3B3;
 }

@@ -9,10 +9,14 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/79ccff3e15.js" crossorigin="anonymous"></script>
 	
 </head>
 <body>
-	
+	<div class="mode-edition">
+		<p><i class="fa-regular fa-pen-to-square"></i> Mode édition</p>
+		<button type="button" class="publier"> publier les changments</button>
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav> 
@@ -27,9 +31,11 @@
 <main>
 	<section id="introduction">
 		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
+			<img class=imgintro src="./assets/images/sophie-bluel.png" alt="">
+			<span  class="modifier hide-edition"><i class="fa-regular fa-pen-to-square"></i>modifier</span>
 		</figure>
 		<article>
+			<span  class="modifier hide-edition"><i class="fa-regular fa-pen-to-square"></i>modifier</span>
 			<h2>Designer d'espace</h2>
 			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
 			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
@@ -37,12 +43,13 @@
 		</article>
 	</section>
 	<section id="portfolio">
+		<div class="titlemod">
 		<h2 class="titleprojet">Mes Projets</h2>
+		<span id="modal-mod" class="modifier hide-edition"><i class="fa-regular fa-pen-to-square"></i>modifier</span>
+		</div>
 		<div class="bouton-filtre"></div>
 		<div class="gallery"></div>
-		<script src="/FrontEnd/work.js"></script>
 	  </section>
-	  
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -57,7 +64,7 @@
 		</form>
 	</section>
 </main>
-<script src="/FrontEnd/modal.js"></script>	
+
 <footer>
 	<nav>
 		<ul>
@@ -65,5 +72,19 @@
 		</ul>
 	</nav>
 </footer>
+<aside id="modal" aria-hidden="true" style="display: none;">
+	<div class="modal-wrapper">
+		<h1>Galerie photo</h1>
+		<i class="close fa-solid fa-xmark"></i>
+		<div class="gallery-modal">
+		</div>
+		<hr>
+		<button id="add-image">Ajouter une photo</button>
+		<button id="remove-gallery">Supprimer la galerie</button>
+	</div>
+</aside>
+<script src="/FrontEnd/modal.js"></script>	
+<script src="/FrontEnd/work.js"></script>
+
 </body>
 </html>
