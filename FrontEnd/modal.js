@@ -55,4 +55,38 @@ if (token) {
   });
 }
 
+// Adresse de récupération des images //
+fetch("http://localhost:5678/api/works")
+  // Extraction des données de réponse au format JSON   
+  .then(response => response.json())
+  .then(data => {
+    // création d'un tableau pour stocker toutes les images
+    const images = [];
+    data.forEach(work => {
+      // création d'une div image container
+      const imgContainer = document.createElement("div");
+      imgContainer.classList.add("modal-image-container");
+      const img = document.createElement("img");
+      img.src = work.imageUrl;
+      imgContainer.appendChild(img);
+      // création d'un bouton Editer
+      const editor = document.createElement('span');
+      editor.innerHTML = "éditer";
+      imgContainer.appendChild(editor);
+      // création logo trash 
+      const bin = document.createElement("img");
+      bin.classList.add("bin");
+      bin.src = "assets/icons/bin.png";
+      bin.setAttribute("crossorigin", "anonymous");
+      imgContainer.appendChild(bin);
+      // création logo mouve
+      const enlarge = document.createElement('img');
+      enlarge.setAttribute('class', 'enlarge');
+      enlarge.src = "assets/icons/Move.Png";
+      imgContainer.appendChild(enlarge);
+      // ajout de l'image à la div gallery-modal
+      const galleryModal = document.querySelector(".gallery-modal");
+      galleryModal.appendChild(imgContainer);
+    });
+  });
 

@@ -287,7 +287,7 @@ a {
 .imgintro{
 	margin:0 !important;
 }
-
+/* mode edition */
 .mode-edition {
 	position: absolute;
 	justify-content: center;
@@ -319,9 +319,6 @@ a {
 	margin-top: 16px;
 }
 
-.hide-edition {
-	display: none;
-}
 
 .modifier i{
 	margin-right: 10px;
@@ -351,7 +348,7 @@ a {
 .hide-edition {
     display:none !important;
 }
-
+/* modal galerie photo */
 #modal{
 	position: fixed;
 	left: 0;
@@ -370,20 +367,20 @@ a {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding: 50px 100px;
+	max-width: 630px;
 	height: 730px;
-	width: 630px;
 	border-radius: 10px;
 	background-color: white;
 }
 
 #modal .modal-wrapper h1{
-	font-family:"Work Sans";
-	font-size: 28px;
-	color: black;
+	font-family: 'Work Sans';
+	font-size: 26px;
 	font-weight: 400;
-	margin-bottom:50px;
-	position: absolute;
-	top:64px
+	color: black;
+	margin-bottom: 50px;
+	margin-top: 50px;
 }
 
 .close {
@@ -395,29 +392,82 @@ a {
 }
 
 button#add-image {
-	position: absolute;
-	width: 230px;
-	height: 36px;
-	justify-content: center;
-	background-color: #1D6154;
+	font-family: "Syne";
+	font-weight: 700;
+	font-size: 14px;
 	color: white;
-	bottom: 90px;
-	font-family: "syne";
-	font-size: 14px
+	padding: 9px 49px;
+	width: 237px;
+	
+    border: none;
+	border-radius: 60px;
+	background-color: #1D6154;
+	box-shadow: 0px 4px 14px rgb(0 0 0 / 9%);
 }
 
 button#remove-gallery {
-	position: absolute;
-	bottom: 40px;
+	font-family: 'Syne';
+	font-weight: 400;
+	font-size: 14px;
+	color: #D65353;
+	background-color: white;
 	border: none;
-	color: red;
-	font-size: 12px;
-	font-weight: 500;
 }
 
 hr{
-	position: absolute;
 	width: 420px;
-	bottom: 160px;
+	margin-bottom: 30px;
 	border-top: 1px solid #B3B3B3;
 }
+
+#modal .gallery-modal{
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	gap: 15px 10px;
+	margin-bottom: 50px;
+}
+
+#modal .modal-image-container{
+	position: relative;
+	z-index: 1;
+	width: 78px;
+}
+
+#modal .modal-image-container img:first-child{
+	width: 100%;
+	height: 104px;
+	object-fit: cover;
+	
+}
+#modal .modal-image-container .enlarge{
+	display: block;
+}
+
+#modal .modal-image-container span {
+	font-size: 12px;
+}
+#modal .bin{
+	position: absolute;
+	right: 3px;
+	top: 3px;
+    height: 17px;
+	object-fit: cover;	
+}
+#modal .enlarge{
+	position: absolute;
+	right: 22px;
+	top: 3px;
+	display: none;
+    height: 17px;
+	object-fit: cover;	
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+#modal .enlarge:hover {
+	opacity: 1;
+
+}
+body.modal {
+	overflow: hidden;
+  }

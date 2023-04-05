@@ -26,11 +26,14 @@ fetch("http://localhost:5678/api/works")
         images.push({element: imgContainer, category: "hotels"});
       }
 });
+    
     // ajout des images à la div gallery
     const imageContainer = document.querySelector(".gallery");
     images.forEach(image => {
       imageContainer.appendChild(image.element);
     });
+    
+   
     // mesage pour indiquée que la requête et la création son ok dans la console nav
     console.log("Données récupérées !");
     // Création de 4 Boutons
