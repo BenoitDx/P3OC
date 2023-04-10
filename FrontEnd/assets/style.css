@@ -348,7 +348,9 @@ a {
 .hide-edition {
     display:none !important;
 }
+
 /* modal galerie photo */
+
 #modal{
 	position: fixed;
 	left: 0;
@@ -398,7 +400,6 @@ button#add-image {
 	color: white;
 	padding: 9px 49px;
 	width: 237px;
-	
     border: none;
 	border-radius: 60px;
 	background-color: #1D6154;
@@ -411,7 +412,7 @@ button#remove-gallery {
 	font-size: 14px;
 	color: #D65353;
 	background-color: white;
-	border: none;
+	border:none;
 }
 
 hr{
@@ -468,6 +469,175 @@ hr{
 	opacity: 1;
 
 }
-body.modal {
-	overflow: hidden;
-  }
+
+/* modal post*/
+
+#modal-post{
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.3); 
+}
+
+.post-wrapper{
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 55px 100px;
+	width: 630px;
+	height: 670px;
+	gap: 10px 0;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.back {
+	position: absolute;
+	top:32px ;
+	left:32px; 
+	font-size: 20px;
+	
+	
+}
+
+.post-wrapper h1{
+	font-family: "work Sans";
+	font-size: 24px;
+	color: black;
+	margin-bottom:36px ;
+}
+
+.post-wrapper .label-image{
+	width: 420px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #E8F1F6;
+	height: 190px;
+	
+	position:relative;
+}
+
+button#submitimg{
+	background-color: #CBD6DC;
+	color:#306685;
+	border:none;
+	font-weight: 500;
+	font-size: 14px;
+	height: 36px;
+	width: 180px;
+	border-radius: 50px;
+	padding: 10px 30px;
+	position: absolute;
+	bottom:32px
+}
+.restriction {
+	color: #444;
+	position: absolute;
+	bottom:19px;
+	font-size: 10px;	
+}
+
+.label-image i{
+	position: absolute;
+	top: 32px;
+	font-size: 45px;
+	color: #9ea0a3;
+}
+
+.tilte-cat-button {
+	display: flex;
+	flex-direction: column;
+
+}
+
+.post-wrapper input{
+	max-height:5px;
+	color: black;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+	appearance: none;
+	outline: none;
+	padding: 18px 16px;
+	
+}
+
+#form-post div label{
+	margin-bottom:10px ;
+}
+
+
+
+#form-post .select-menu{
+	width: 420px;
+	margin-bottom: 47px;
+	
+}
+
+.select-menu ul{
+	position: relative;
+	padding: px;
+	display: none;
+}
+
+.select-menu.active ul{
+	position: absolute;
+	display: block;
+}
+
+.select-menu ul li{
+	display: flex;
+}
+
+.select-menu ul li:hover{
+	background-color: #f2f2f2;
+	color: black;
+}
+
+#image-preview{
+	height: 100%;
+	position: absolute;
+}
+
+
+#form-post .select{	
+	position: relative;
+	height: 41px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-bottom: 12px;
+}
+
+select{
+	width: 100%;
+	border: none;
+	appearance: none;
+	outline: none;
+	
+
+}
+
+.buttonval{
+	display: flex;
+	justify-content: center;
+	color: white;
+	font-family: "Syne";
+	font-weight: 700;
+	border: none;
+	border-radius:60px ;
+	font-size: 14px;
+	background-color: grey;
+	width: 237px;
+	height: 36px;
+	align-self: center;
+	transition: 1s;
+}
+
+#form-post button.green-button{
+	background-color: #1D6154;
+}

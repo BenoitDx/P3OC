@@ -84,8 +84,37 @@
 		<button id="remove-gallery">Supprimer la galerie</button>
 	</div>
 </aside>
-<!---- modal upload photo ----->
-
+<!---- modal post ----->
+<aside id="modal-post" aria-hidden="true" style="display: no ne;" >
+	<div class="post-wrapper">
+		<i class="close fa-solid fa-xmark"></i>
+		<i class="back fa-solid fa-arrow-left"></i>
+		<h1>Ajout photo</h1>
+		<form id="form-post" method="post" enctype="multipart/form-data">
+			<label class="label-image" for="file-input" id="form-img">
+				<i class="fa-sharp fa-regular fa-image" ></i>
+				<button id="submitimg">+ Ajouter photo</button>
+				<span class="restriction">jpg, png : 4mo max</span>
+				<input id="file-input" type="file" accept=".jpg, .png" style="display: none;"/>
+			</label>
+			<div class="tilte-cat-button">
+				<label for="form-title">Titre</label>
+				<input type="text" name="title" id="form-title" required>
+				<label for="categories-form">Catégorie</label>
+				<div class="select">
+					<select name="select-categories" id="categories-form" required>
+						<option value=""></option>
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hotels & restaurants</option>
+					</select>
+				</div>
+				<hr>
+				<button class="buttonval" type="submit" > Valider</button>
+			</div>
+		</form>
+	</div>
+</aside>
 
 
 

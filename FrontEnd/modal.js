@@ -33,7 +33,7 @@ if (token) {
   modalMod.addEventListener("click", function() {
     // Sélection de l'élément modal
     const modal = document.getElementById("modal");
-    // Modification de la propriété display pour afficher la modal
+    // Modification de la propriété display pour afficher la modal gallerie photo
     modal.style.display = "flex";
 
     // Ajout d'un gestionnaire d'événement au bouton close pour fermer la modal
