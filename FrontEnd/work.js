@@ -11,6 +11,8 @@ fetch("http://localhost:5678/api/works")
       imgContainer.classList.add("image-container");
       const img = document.createElement("img");
       img.src = work.imageUrl;
+       // Ajout de l'attribut data-id contenant l'ID de l'image
+      img.setAttribute("data-id", work.id);
       imgContainer.appendChild(img);
       // création d'une div title
       const title = document.createElement("div");
