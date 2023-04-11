@@ -190,20 +190,112 @@ closeButtonGallery.addEventListener('click', function() {
   
 });
 
-const fileInput = document.getElementById('file-input');
+// Récupération des éléments HTML
 const imagePreview = document.getElementById('image-preview');
+const openModalPost = document.querySelector("#add-image")
+const modallPost = document.querySelector("#modal-post")
+const fileInput = document.getElementById('file-input');
+const addImage = document.querySelector('#form-img p');
+const form = document.getElementById('form-post');
+const titleInput = document.getElementById('form-title');
+const categorySelect = document.getElementById('categories-form');
+const imageInput = document.getElementById('file-input');
+const submitButton = document.querySelector('#form-post button');
 
-fileInput.onchange = () => {
-  const file = fileInput.files[0];
-  const reader = new FileReader();
-
-  reader.onload = () => {
-    imagePreview.style.display = 'block';
-    imagePreview.setAttribute('src', reader.result);
-  }
-
-  if (file) {
-    reader.readAsDataURL(file);
+// Fonction pour vérifier si tous les champs sont remplis
+function checkFields() {
+  const title = titleInput.value;
+  const category = categorySelect.value;
+  const imageFile = imageInput.files[0];
+  
+  if (title.length === 0 || category === '' || !imageFile) {
+    return false;
+  } else {
+    return true;
   }
 }
+
+// Écouteurs d'événements pour afficher la prévisualisation de l'image et vérifier si tous les champs sont remplis
+openModalPost.addEventListener("click", (event) => {
+  event.preventDefault()
+  modalPost.style.display = "";
+  modal.style.display = "none";
+  
+  // Affiche l'image dans le input-file
+  fileInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      imagePreview.style.display = "";
+      const fileSize = file.size / 1024 / 1024; // Conversion de la taille en Mo
+      if (fileSize > 4) {
+        alert('Le fichier sélectionné est trop volumineux. Veuillez sélectionner un fichier de moins de 4 Mo.');
+      } else {
+        addImage.style.display = "none";
+        const imageUrl = URL.createObjectURL(file);
+        imagePreview.src = imageUrl;
+      }
+    }
+  });
+});
+
+// Écouteur d'événement pour envoyer les données du formulaire à l'API
+form.addEventListener('submit', async function(event) {
+  event.preventDefault(); 
+  // Récupère les valeurs des inputs
+  const title = titleInput.value;
+  const category = categorySelect.value;
+  const imageFile = imageInput.files[0];
+
+  if (title.length === 0 || category === '' || !imageFile) {
+    console.error('erreur');
+    return;
+  }
+  
+  // Objet FormData() envoie les données du formulaire à l'API
+  const formData = new FormData();
+  formData.append('title', title);
+  formData.append('category', category);
+  formData.append('image', imageFile);
+
+  const response = await fetch("http://localhost:5678/api/works", {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+    body: formData
+  });
+
+  if (response.ok) {
+    // Ajoute le nouveau projet au tableau dWorks et ferme la modal
+    let newWork = await response.json();
+    dWorks.push(newWork);  
+    displayWorks(dWorks);
+    closeModal();
+  }
+});
+
+// Écouteurs d'événements pour vérifier si tous les champs sont remplis
+titleInput.addEventListener('input', function() {
+  if (checkFields()) {
+    submitButton.classList.add("green-button");
+  } else {
+    submitButton.classList.remove("green-button");
+  }
+});
+
+categorySelect.addEventListener('change', function() {
+  if (checkFields()) {
+    submitButton.classList.add("green-button");
+  } else {
+    submitButton.classList.remove("green-button");
+  }
+});
+
+imageInput.addEventListener('change', function() {
+  if (checkFields()) {
+    submitButton.classList.add("green-button");
+  } else {
+    submitButton.classList.remove("green-button");
+  }
+});
 

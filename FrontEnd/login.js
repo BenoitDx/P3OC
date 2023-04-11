@@ -1,20 +1,18 @@
-// Script de vérification et connextion // 
-
-
-
-// Récuperer les information saisie //  
+// Récupération des éléments HTML correspondant aux champs email et password
 const emailInput = document.querySelector('input[name="E-mail"]');
 const passwordInput = document.querySelector('input[name="password"]');
 
-// clic sur le bouton connextion //
+// Ajout d'un écouteur d'événement sur le bouton de connexion
 const loginButton = document.querySelector('.buttonlog');
 loginButton.addEventListener('click', () => {
     
-  // requete vers serveur // 
+  // Création du corps de la requête POST avec les informations saisies par l'utilisateur
   const requestBody = {
     email: emailInput.value,
     password: passwordInput.value
   };
+
+  // Envoi de la requête POST vers le serveur
   fetch('http://localhost:5678/api/users/login', {
     method: 'POST',
     headers: {
@@ -24,20 +22,18 @@ loginButton.addEventListener('click', () => {
   })
   .then(response => {
     if (response.ok) {
-      // Si connexion reussi redirige vers la page index //
+      // Si la connexion est réussie, on redirige l'utilisateur vers la page index et on stocke le token dans la session
       response.json().then(data => {
-        // stockage du token dans la session
         sessionStorage.setItem('token', data.token);
       });
       window.location.href = 'index.html';
     } else {
-      // Si erreur d'identifiant affiche un message //
-      alert('Identifiants ou mots de passe invalides. Veuillez réessayer.');
+      // Si les identifiants sont incorrects, on affiche un message d'erreur
+      alert('Erreur dans l identifiant ou le mot de passe');
     }
   })
-  
-  // Erreurs // 
   .catch(error => {
+    // En cas d'erreur, on affiche un message dans la console
     console.error('Erreur:', error);
   });
 });
