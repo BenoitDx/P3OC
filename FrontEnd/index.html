@@ -85,15 +85,16 @@
 	</div>
 </aside>
 <!---- modal post ----->
-<aside id="modal-post" aria-hidden="true" style="display: no ne;" >
+<aside id="modal-post" aria-hidden="true" style="display: none;" >
 	<div class="post-wrapper">
-		<i class="close fa-solid fa-xmark"></i>
+		<i class="close closepost fa-solid fa-xmark"></i>
 		<i class="back fa-solid fa-arrow-left"></i>
 		<h1>Ajout photo</h1>
 		<form id="form-post" method="post" enctype="multipart/form-data">
 			<label class="label-image" for="file-input" id="form-img">
 				<i class="fa-sharp fa-regular fa-image" ></i>
-				<button id="submitimg">+ Ajouter photo</button>
+				<img id="image-preview"  src="" alt="" style="display: none;">
+				<p id="add-photo-text">+ Ajouter photo</p>
 				<span class="restriction">jpg, png : 4mo max</span>
 				<input id="file-input" type="file" accept=".jpg, .png" style="display: none;"/>
 			</label>
@@ -102,6 +103,7 @@
 				<input type="text" name="title" id="form-title" required>
 				<label for="categories-form">Catégorie</label>
 				<div class="select">
+					<img src="assets/icons/arrow-categories.png" alt="">
 					<select name="select-categories" id="categories-form" required>
 						<option value=""></option>
 						<option value="1">Objets</option>
