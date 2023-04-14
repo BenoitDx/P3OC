@@ -20,7 +20,7 @@ if (token) {
     element.classList.remove('hide-edition');
   });
 
-  // Ajout d'un gestionnaire d'événement au lien de connexion pour déconnecter l'utilisateur
+  // Ajout d'un écouteur d'événement au lien de connexion pour déconnecter l'utilisateur
   loginLink.addEventListener('click', () => {
     // Suppression du token de la session
     sessionStorage.removeItem('token');
@@ -28,7 +28,7 @@ if (token) {
     window.location.href = 'login.html';
   });
 
-  // Ajout d'un gestionnaire d'événement à l'élément modal-mod pour afficher la modal
+  // Ajout d'un écouteur d'événement à l'élément modal-mod pour afficher la modal
   const modalMod = document.getElementById("modal-mod");
   modalMod.addEventListener("click", function() {
     // Sélection de l'élément modal
@@ -36,7 +36,7 @@ if (token) {
     // Modification de la propriété display pour afficher la modal gallerie photo
     modal.style.display = "flex";
 
-    // Ajout d'un gestionnaire d'événement au bouton close pour fermer la modal
+    // Ajout d'un écouteurr d'événement au bouton close pour fermer la modal
     const close = document.querySelector(".close");
     close.addEventListener("click", function() {
       // Modification de la propriété "display" pour masquer la modal
@@ -44,7 +44,7 @@ if (token) {
     });
   });
 
-  // Ajout d'un gestionnaire d'événement à l'élément window pour fermer la modal lorsqu'on clique en dehors de la fenêtre
+  // Ajout d'un écouteur d'événement à l'élément window pour fermer la modal lorsqu'on clique en dehors de la fenêtre
   window.addEventListener("click", function(event) {
     // Sélection de l'élément modal
     const modal = document.getElementById("modal");
@@ -55,81 +55,83 @@ if (token) {
   });
 }
 
-// Adresse de récupération des images //
+// Récupérer les images depuis l'API
 fetch("http://localhost:5678/api/works")
-  // Extraction des données de réponse au format JSON   
-  .then(response => response.json())
+  // Extraire les données de réponse au format JSON
+  .then(response => response.json()) 
   .then(data => {
-    // création d'un tableau pour stocker toutes les images
+    // Stocker toutes les images dans un tableau
     const images = [];
+
+    // Créer un conteneur d'image pour chaque élément de données
     data.forEach(work => {
-      // création d'une div image container
       const imgContainer = document.createElement("div");
       imgContainer.classList.add("modal-image-container");
+
+      // Ajouter l'image
       const img = document.createElement("img");
       img.src = work.imageUrl;
-       // Ajout de l'attribut data-id contenant l'ID de l'image
       img.setAttribute("data-id", work.id);
       imgContainer.appendChild(img);
-      // création d'un bouton Editer
+
+      // Ajouter un bouton d'édition
       const editor = document.createElement('span');
       editor.innerHTML = "éditer";
       imgContainer.appendChild(editor);
-      // création logo trash 
+
+      // Ajouter l'icône de la corbeille pour supprimer l'image
       const bin = document.createElement("img");
       bin.classList.add("bin");
       bin.src = "assets/icons/bin.png";
       bin.setAttribute("crossorigin", "anonymous");
       imgContainer.appendChild(bin);
-      // création logo mouve
+
+      // Ajouter l'icône de déplacement
       const enlarge = document.createElement('img');
       enlarge.setAttribute('class', 'enlarge');
       enlarge.src = "assets/icons/Move.Png";
       imgContainer.appendChild(enlarge);
-// Ajout d'un gestionnaire d'événement à l'icône de la corbeille pour supprimer une image
-const bins = document.querySelectorAll(".bin");
-bins.forEach(bin => {
-  bin.addEventListener("click", function() {
-    const id = this.parentNode.querySelector("img").getAttribute("data-id"); // récupère l'ID de l'image à partir de l'attribut data-id de l'image
-    fetch(`http://localhost:5678/api/works/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Authorization": `Bearer ${token}`, // ajoute le token d'authentification à l'en-tête de la requête
-        "Content-Type": "application/json" // spécifie le type de contenu de la requête
-      }
-    })
-    .then(response => {
-      if (response.ok) {
-        // Suppression réussie - retire l'image de la galerie
-        const imageContainer = this.parentNode;
-        imageContainer.remove();
-         // Supprime également l'image de la page principale
-         const mainImage = document.querySelector(`[data-id='${id}']`).parentNode;
-         mainImage.remove();
-      } else {
-        // Erreur lors de la suppression
-        console.log(`Erreur de suppression : ${response.status} - ${response.statusText}`);
-        return response.json(); // convertit la réponse en objet JSON
-      }
-    })
-    .then(data => {
-      // traite les données renvoyées par l'API
-      console.log(data);
-    })
-    .catch(error => console.log(`Erreur de suppression : ${error.message}`));
-  });
-});
 
+      // Ajouter un gestionnaire d'événements à l'icône de la corbeille pour supprimer l'image
+      bin.addEventListener("click", function() {
+        const id = this.parentNode.querySelector("img").getAttribute("data-id");
+        // Envoyer une requête DELETE à l'API pour supprimer l'image
+        fetch(`http://localhost:5678/api/works/${id}`, {
+          method: "DELETE",
+          headers: {
+             // Ajouter le token d'authentification à l'en-tête de la requête
+            "Authorization": `Bearer ${token}`,
+             // Ajouter le token d'authentification à l'en-tête de la requête 
+            "Content-Type": "application/json" 
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Suppression réussie - retirer l'image de la galerie
+            const imageContainer = this.parentNode;
+            imageContainer.remove();
 
+            // Retirer également l'image de la page principale
+            const mainImage = document.querySelector(`[data-id='${id}']`).parentNode;
+            mainImage.remove();
+          } else {
+            // Erreur lors de la suppression
+            console.log(`Erreur de suppression : ${response.status} - ${response.statusText}`);
+            return response.json(); // Convertir la réponse en objet JSON
+          }
+        })
+        .then(data => {
+          // Traiter les données renvoyées par l'API
+          console.log(data);
+        })
+        .catch(error => console.log(`Erreur de suppression : ${error.message}`));
+      });
 
-      // ajout de l'image à la div gallery-modal
-
+      // Ajouter l'image à la div gallery-modal
       const galleryModal = document.querySelector(".gallery-modal");
       galleryModal.appendChild(imgContainer);
     });
-    
   });
-
 // Récupération du bouton "Ajouter une photo" de la modal galerie photo
 const addImageBtn = document.querySelector('#add-image');
 
@@ -137,7 +139,7 @@ const addImageBtn = document.querySelector('#add-image');
 const modalGalerie = document.querySelector('#modal');
 const modalPost = document.querySelector('#modal-post');
 
-// Ajout d'un gestionnaire d'événement au clic sur le bouton "Ajouter une photo"
+// Ajout d'un écouteur d'événement au clic sur le bouton "Ajouter une photo"
 addImageBtn.addEventListener('click', () => {
   // Fermeture de la modal galerie photo
   modalGalerie.style.display = 'none';

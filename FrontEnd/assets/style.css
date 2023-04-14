@@ -570,7 +570,8 @@ button#submitimg{
 	appearance: none;
 	outline: none;
 	padding: 18px 16px;
-	
+	font-size: 14px;
+	font-family: 'Syne';
 }
 
 #form-post div label{
@@ -627,10 +628,8 @@ select{
 	border: none;
 	appearance: none;
 	outline: none;
-	font-family: 'Work Sans';
-	
-	
-
+	font-family: 'Syne';
+	font-size: 14px;
 }
 
 .buttonval{
